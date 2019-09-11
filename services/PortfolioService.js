@@ -1,7 +1,7 @@
 const { models } = require('../models');
 
 module.exports = {
-    findAllProjects: () => models.Projects.find({}, (succ, user) => user),
+    findAllProjects: () => models.Projects.find({}, (succ, projects) => projects),
     portfolioMeta: () => models.PortfolioMeta.find({}, (succ, meta) => meta),
     createContactForm: (root, args) => {
         const contactForm = new models.ContactForm({

@@ -3,7 +3,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, AuthenticationError } = require('apollo-server-express');
+const jwt = require('jsonwebtoken');
 const resolvers = require('./graphql/resolvers/index');
 
 const indexRouter = require('./controllers/index');
@@ -31,7 +32,15 @@ app.use('/', indexRouter);
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: () => ({ test: true }),
+    context: ({ req }) => {
+        const auth = req.headers.authorization;
+        try {
+            jwt.verify(auth, process.env.PORTFOLIO_JWT_SECRET);
+        } catch (err) {
+            throw new AuthenticationError();
+        }
+        return { authenticated: true };
+    },
 });
 
 const publicServer = new ApolloServer({
