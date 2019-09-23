@@ -5,7 +5,7 @@ const PortfolioMetaSchema = new mongoose.Schema({
         type: String,
     },
     metaValue: {
-        type: String,
+        type: JSON,
     },
     metaType: {
         type: String,

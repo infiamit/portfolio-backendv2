@@ -1,10 +1,13 @@
 const { gql } = require('apollo-server-express');
 
 module.exports = gql`
+scalar JSON
+scalar JSONOBJECT
 type PortfolioMeta{
   metaKey: String
-  metaValue: String
+  metaValue: JSON
   metaType: String
+  _id: JSON
 }
 
 type Project{
