@@ -10,6 +10,7 @@ module.exports = {
             phone: args.contactFormInput.phone,
             website: args.contactFormInput.website,
             message: args.contactFormInput.message,
+            subject: args.contactFormInput.subject,
             createdAt: new Date(),
         });
         return contactForm.save().then(() => true);

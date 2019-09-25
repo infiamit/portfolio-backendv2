@@ -31,6 +31,7 @@ projectIcon: String
     phone: String
     website: String
     message: String
+    subject: String
   }
 
  type Mutation{

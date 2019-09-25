@@ -16,6 +16,9 @@ const ContactFormSchema = new mongoose.Schema({
     message: {
         type: String,
     },
+    subject: {
+        type: String,
+    },
     createdAt: {
         type: Date,
     },

@@ -10,6 +10,7 @@ type ContactForm{
  website: String
  message: String
  createdAt: String
+ subject: String
 }
 
 extend type Query{
